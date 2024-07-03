@@ -3,16 +3,28 @@
   padding: 0;
 }
 
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+  position: relative;
+}
+
 #contact_modal {
   display: none;
+  position: fixed;
+  top: 40px;
+  left: 30%;
+  width: 670px;
+  height: 900px;
 }
 
 .photograph-header {
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
+  padding: 0 50px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -20,9 +32,11 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  object-fit: fill;
 }
-
+.contact_modal .contact_button:hover {
+  background-color: #901c1c;
+  opacity: 0.8;
+}
 .contact_button {
   font-size: 20px;
   font-weight: bold;
@@ -35,32 +49,44 @@
   border-radius: 5px;
   cursor: pointer;
 }
+.photograph-header .contact_button:hover {
+  background-color: #db8876;
+}
+.photograph-header .contact_button:focus {
+  background-color: #db8876;
+}
+
+form .contact_button:hover {
+  background-color: #901c1c;
+  opacity: 0.8;
+}
 
 .modal {
   border-radius: 5px;
   background-color: #db8876;
-  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 35px;
-  margin: auto;
+  padding: 0px 35px 35px;
 }
 
 .modal header {
+  display: flex;
   justify-content: space-between;
+  align-items: start;
   width: 100%;
+  height: 100%;
 }
 
 .modal header img {
   cursor: pointer;
+  margin-top: 20px;
 }
 
 .modal header h2 {
   font-size: 64px;
   font-weight: normal;
-  text-align: center;
 }
 
 form {
@@ -79,7 +105,7 @@ form div {
   display: flex;
   flex-direction: column;
   width: 100%;
-  align-items: self-start;
+
   margin-bottom: 26px;
 }
 
@@ -88,16 +114,20 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+  color: #312e2e;
+  font-size: 36px;
+}
+form div input:nth-of-type(4) {
+  height: 170px;
 }
 
 .photographer_media {
-  margin-bottom: 50px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   row-gap: 2em;
-  margin: 0px 100px;
+  margin: 0px 100px 50px;
 }
 .photographer_media .media {
   display: flex;
@@ -116,6 +146,10 @@ form input {
   display: flex;
   justify-content: space-between;
 }
+.title_picture {
+  color: #901c1c;
+  font-size: 24px;
+}
 .like_container {
   display: flex;
   align-items: center;
@@ -125,6 +159,65 @@ form input {
   width: 18px;
   height: 18px;
 }
+
+.like_container .liked {
+  color: #901c1c;
+  font-weight: bold;
+}
+
 .sort_media {
   margin: 20px 100px 60px 100px;
+}
+.sort_media label {
+  color: #000000;
+  font-size: 18px;
+  font-weight: bold;
+}
+.sort_media select {
+  color: #ffffff;
+  background-color: #901c1c;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+.sort_media select:focus {
+  outline: none;
+}
+
+.photograph-info h2 {
+  color: #d3573c;
+  font-size: 64px;
+}
+
+.photograph-info .location {
+  color: #901c1c;
+  font-size: 24px;
+}
+.photograph-info .descrption {
+  color: #525252;
+  font-size: 18px;
+}
+#like_counter_and_price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0px;
+  right: 30px;
+  width: 340px;
+  padding: 10px 20px;
+  background-color: #db8876;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 5px 5px 0px 0px;
+  z-index: 1000;
+}
+#like_counter {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+}
+#like_counter img {
+  width: 18px;
+  height: 18px;
 }

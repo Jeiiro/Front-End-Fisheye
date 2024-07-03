@@ -11,6 +11,7 @@ function photographerTemplate(data) {
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     const h2 = document.createElement("h2");
+    h2.setAttribute("class", "photographer_name");
     h2.textContent = name;
     const location = document.createElement("p");
     location.textContent = `${city}, ${country}`;
@@ -42,6 +43,7 @@ function photographerTemplatePageHeader(data) {
     const info = document.createElement("div");
     info.setAttribute("class", "photograph-info");
     const h2 = document.createElement("h2");
+    h2.setAttribute("class", "photographer_name");
     h2.textContent = name;
     const location = document.createElement("p");
     location.textContent = `${city}, ${country}`;
@@ -61,11 +63,6 @@ function photographerTemplatePageHeader(data) {
     info.appendChild(description);
     header.appendChild(button);
     header.appendChild(img);
-
-    // const prix = document.createElement("p");
-    // prix.textContent = `${price}€/jour`;
-    // prix.setAttribute("class", "prix");
-
     return header;
   }
 
@@ -76,7 +73,7 @@ function photographerTemplatePageMedia(data) {
 
   const picture = `assets/images/${photographerId}/${image}`;
   const mp4 = `assets/images/${photographerId}/${video}`;
-  const heart = `assets/icons/heart-solid.svg`;
+  const heart = `assets/icons/heart-solid.png`;
 
   function getUserMediaDOM() {
     const media = document.createElement("div");
@@ -94,7 +91,10 @@ function photographerTemplatePageMedia(data) {
       name.setAttribute("class", "title_picture");
       const like = document.createElement("p");
       like.textContent = likes;
+      like.setAttribute("class", "likes");
       const likeIcon = document.createElement("img");
+      likeIcon.setAttribute("class", "fav");
+      likeIcon.setAttribute("onclick", "toggleLikes(this)");
       likeIcon.setAttribute("src", heart);
       media.appendChild(photo);
       media.appendChild(firstcontainer);
@@ -115,7 +115,10 @@ function photographerTemplatePageMedia(data) {
       name.setAttribute("class", "title_picture");
       const like = document.createElement("p");
       like.textContent = likes;
+      like.setAttribute("class", "likes");
       const likeIcon = document.createElement("img");
+      likeIcon.setAttribute("class", "fav");
+      likeIcon.setAttribute("onclick", "toggleLikes(this)");
       likeIcon.setAttribute("src", heart);
       media.appendChild(film);
       media.appendChild(firstcontainer);
@@ -129,3 +132,4 @@ function photographerTemplatePageMedia(data) {
   }
   return { getUserMediaDOM };
 }
+

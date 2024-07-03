@@ -57,8 +57,10 @@ async function filter(data) {
       console.log("likes");
     } else if (e.target.value === "date") {
       sortedMediaArray = sortAndDisplay("date");
+      console.log("date");
     } else if (e.target.value === "title") {
       sortedMediaArray = sortAndDisplay("title");
+      console.log("titre");
     }
     if (sortedMediaArray) {
       displayDataMedia(sortedMediaArray.map(arrayItemsToMediaObject));
