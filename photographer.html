@@ -38,19 +38,29 @@
           <h2 id="form_title">Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-        <form>
+        <form id="form">
           <div>
             <label>Prénom</label>
-            <input />
+            <input id="first_name" />
             <label>Nom</label>
-            <input />
+            <input id="last_name" />
             <label>Email</label>
-            <input />
+            <input id="mail" />
             <label>Votre Message</label>
-            <input />
+            <textarea id="message"></textarea>
           </div>
           <button class="contact_button">Envoyer</button>
         </form>
+      </div>
+    </div>
+    <div class="lightbox">
+      <header>
+        <img src="assets/icons/close2.svg" onclick="closeLightbox()" />
+      </header>
+      <div class="media_vue">
+        <img src="assets/icons/fleche-gauche.png" alt="" onclick="showPrev()" />
+        <div class="media_zoom"></div>
+        <img src="assets/icons/fleche-droite.png" alt="" onclick="showNext()" />
       </div>
     </div>
     <div id="like_counter_and_price"></div>
@@ -59,5 +69,6 @@
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/utils/sortFilter.js"></script>
     <script src="scripts/utils/likes.js"></script>
+    <script src="scripts/utils/lightbox.js"></script>
   </body>
 </html>

@@ -49,8 +49,6 @@ async function displayTotalLikes() {
   likes.forEach((like) => {
     totalLikes += parseInt(like.textContent);
   });
-  console.log(likes);
-  console.log(totalLikes);
   const heart = "/assets/icons/heart-solid.svg";
   const container = document.getElementById("like_counter_and_price");
   const contain = document.createElement("div");
@@ -83,10 +81,12 @@ async function displayPricePerDay(photographers) {
 async function init() {
   const { photographers } = await getPhotographers();
   const { media } = await getMedia();
-  filter(media);
-  displayData(photographers);
-  displayTotalLikes();
-  displayPricePerDay(photographers);
+
+  await displayData(photographers);
+  await filter(media);
+  await displayTotalLikes();
+  await displayPricePerDay(photographers);
+  await displayMedia();
 }
 
 init();
