@@ -35,11 +35,13 @@ async function displayDataMedia(media) {
   mediaSection.innerHTML = "";
   const params = new URL(document.location).searchParams;
   const id = params.get("id");
+  let tabindexCounter = 4;
   media.forEach((media) => {
     if (id == media.photographerId) {
-      const mediaModel = photographerTemplatePageMedia(media);
+      const mediaModel = photographerTemplatePageMedia(media, tabindexCounter);
       const userMedia = mediaModel.getUserMediaDOM();
       mediaSection.appendChild(userMedia);
+      tabindexCounter++;
     }
   });
 }
@@ -86,7 +88,6 @@ async function init() {
   await filter(media);
   await displayTotalLikes();
   await displayPricePerDay(photographers);
-  await displayMedia();
 }
 
 init();

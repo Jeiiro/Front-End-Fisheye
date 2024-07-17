@@ -33,6 +33,11 @@ body {
   cursor: pointer;
   right: 20px;
 }
+.lightbox header img:focus,
+.lightbox img:focus,
+.lightbox video:focus {
+  outline: 2px solid #d3573c;
+}
 .media_vue {
   display: flex;
   align-items: center;
@@ -77,16 +82,23 @@ body {
 }
 .photograph-header .contact_button:hover {
   background-color: #db8876;
+  color: black;
 }
 .photograph-header .contact_button:focus {
   background-color: #db8876;
+  color: black;
 }
 
 form .contact_button:hover {
   background-color: #901c1c;
   opacity: 0.8;
+  color: black;
 }
-
+form .contact_button:focus {
+  background-color: #901c1c;
+  opacity: 0.8;
+  color: black;
+}
 .modal {
   border-radius: 5px;
   background-color: #db8876;
@@ -110,9 +122,10 @@ form .contact_button:hover {
   margin-top: 20px;
 }
 
-.modal header h2 {
-  font-size: 64px;
+.modal header h1 {
+  font-size: 50px;
   font-weight: normal;
+  color: black;
 }
 
 form {
@@ -143,6 +156,7 @@ form input {
   color: #312e2e;
   font-size: 36px;
 }
+
 form textarea {
   width: 100%;
   height: 140px;
@@ -151,6 +165,7 @@ form textarea {
   color: #312e2e;
   font-size: 36px;
 }
+
 .photographer_media {
   display: flex;
   flex-wrap: wrap;
@@ -171,6 +186,11 @@ form textarea {
   border-radius: 5px;
   object-fit: cover;
   height: 300px;
+  cursor: pointer;
+}
+.photographer_media img:focus,
+.photographer_media video:focus {
+  outline: 2px solid #d3573c;
 }
 .info_container {
   display: flex;
@@ -211,10 +231,10 @@ form textarea {
   padding: 10px;
 }
 .sort_media select:focus {
-  outline: none;
+  outline: 2px solid black;
 }
 
-.photograph-info h2 {
+.photograph-info h1 {
   color: #d3573c;
   font-size: 64px;
 }
@@ -252,7 +272,7 @@ form textarea {
   height: 18px;
 }
 .media_zoom {
-  width: 80vw;
+  max-width: 85vw;
   height: 85vh;
   border-radius: 5px;
   box-shadow: 11px 1px 15px 5px rgba(0, 0, 0, 0.23);
@@ -267,6 +287,7 @@ form textarea {
 .media_zoom video {
   width: 100%;
   height: 100%;
+  border-radius: 5px;
   object-fit: fill;
   cursor: auto;
 }

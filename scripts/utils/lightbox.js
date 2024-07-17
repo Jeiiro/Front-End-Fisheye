@@ -30,21 +30,62 @@ async function displayMedia() {
       currentIndex = index;
       if (media.localName === "img") {
         const src = media.src;
+        const alt = media.alt;
         const lightbox = document.querySelector(".media_zoom");
         const lightboxImage = document.createElement("img");
         lightboxImage.setAttribute("src", src);
         lightboxImage.setAttribute("class", "lightbox_img");
+        lightboxImage.setAttribute("alt", alt);
+        lightboxImage.setAttribute("tabindex", 0);
         lightbox.appendChild(lightboxImage);
         displayLightbox();
+        eventListenerLightbox();
       } else if (media.localName === "video") {
         const src = media.src;
+        const alt = media.alt;
         const lightbox = document.querySelector(".media_zoom");
         const lightboxImage = document.createElement("video");
         lightboxImage.setAttribute("src", src);
         lightboxImage.setAttribute("class", "lightbox_video");
         lightboxImage.setAttribute("controls", "controls");
+        lightboxImage.setAttribute("alt", alt);
+        lightboxImage.setAttribute("tabindex", 0);
         lightbox.appendChild(lightboxImage);
         displayLightbox();
+        eventListenerLightbox();
+      }
+    });
+  });
+  mediaElements.forEach((media, index) => {
+    media.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        currentIndex = index;
+        if (media.localName === "img") {
+          const src = media.src;
+          const alt = media.alt;
+          const lightbox = document.querySelector(".media_zoom");
+          const lightboxImage = document.createElement("img");
+          lightboxImage.setAttribute("src", src);
+          lightboxImage.setAttribute("class", "lightbox_img");
+          lightboxImage.setAttribute("alt", alt);
+          lightboxImage.setAttribute("tabindex", 0);
+          lightbox.appendChild(lightboxImage);
+          displayLightbox();
+          eventListenerLightbox();
+        } else if (media.localName === "video") {
+          const src = media.src;
+          const alt = media.alt;
+          const lightbox = document.querySelector(".media_zoom");
+          const lightboxImage = document.createElement("video");
+          lightboxImage.setAttribute("src", src);
+          lightboxImage.setAttribute("class", "lightbox_video");
+          lightboxImage.setAttribute("controls", "controls");
+          lightboxImage.setAttribute("alt", alt);
+          lightboxImage.setAttribute("tabindex", 0);
+          lightbox.appendChild(lightboxImage);
+          displayLightbox();
+          eventListenerLightbox();
+        }
       }
     });
   });
@@ -71,16 +112,56 @@ function updateLightbox() {
   const media = mediaElements[currentIndex];
   if (media.localName === "img") {
     const src = media.src;
+    const alt = media.alt;
     const lightboxImage = document.createElement("img");
     lightboxImage.setAttribute("src", src);
     lightboxImage.setAttribute("class", "lightbox_img");
+    lightboxImage.setAttribute("alt", alt);
+    lightboxImage.setAttribute("tabindex", 0);
     lightbox.appendChild(lightboxImage);
   } else if (media.localName === "video") {
     const src = media.src;
+    const alt = media.alt;
     const lightboxVideo = document.createElement("video");
     lightboxVideo.setAttribute("src", src);
     lightboxVideo.setAttribute("class", "lightbox_video");
     lightboxVideo.setAttribute("controls", "controls");
+    lightboxVideo.setAttribute("alt", alt);
+    lightboxVideo.setAttribute("tabindex", 0);
     lightbox.appendChild(lightboxVideo);
+  }
+}
+
+function eventListenerLightbox() {
+  const lightbox = document.querySelector(".lightbox");
+  if (lightbox.style.display == "block") {
+    const closeIcon = document.querySelector(".close_icon_lightbox");
+    const prevArrow = document.querySelector(".prev_arrow_icon_lightbox");
+    const nextArrow = document.querySelector(".next_arrow_icon_lightbox");
+
+    closeIcon.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        closeLightbox();
+      }
+    });
+
+    prevArrow.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        showPrev();
+      }
+    });
+
+    nextArrow.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        showNext();
+      }
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") {
+        showNext();
+      } else if (e.key === "ArrowLeft") {
+        showPrev();
+      }
+    });
   }
 }

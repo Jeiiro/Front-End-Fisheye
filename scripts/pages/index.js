@@ -11,11 +11,15 @@ async function getPhotographers() {
 
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
-
+  let tabindexCounter = 2;
   photographers.forEach((photographer) => {
-    const photographerModel = photographerTemplate(photographer);
+    const photographerModel = photographerTemplate(
+      photographer,
+      tabindexCounter
+    );
     const userCardDOM = photographerModel.getUserCardDOM();
     photographersSection.appendChild(userCardDOM);
+    tabindexCounter++;
   });
 }
 
@@ -35,6 +39,14 @@ async function openPhotographerPage() {
     photographer.addEventListener("click", () => {
       console.log(photographer.id);
       window.location.href = `photographer.html?id=${photographer.id}`;
+    });
+  });
+  photographersContainer.forEach((photographer) => {
+    photographer.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        console.log(photographer.id);
+        window.location.href = `photographer.html?id=${photographer.id}`;
+      }
     });
   });
 }

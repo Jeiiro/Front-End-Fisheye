@@ -12,58 +12,92 @@
   </head>
   <body>
     <header>
-      <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" />
-      </a>
+      <nav>
+        <a href="index.html" tabindex="1">
+          <img
+            src="assets/images/logo.png"
+            class="logo"
+            alt="Fisheye Home page"
+          />
+        </a>
+      </nav>
     </header>
     <main id="main">
-      <div class="photograph-header"></div>
+      <section class="photograph-header"></section>
       <div class="sort_media">
         <label
           >Trier par :
-          <select>
+          <select alt="Order by" tabindex="3">
             <option value="likes" id="popularity">Popularité</option>
             <option value="date" selected id="date">Date</option>
             <option value="title" id="name">Titre</option>
           </select>
         </label>
       </div>
-      <div class="photographer_media">
+      <section class="photographer_media">
         <div class="user_media"></div>
-      </div>
+      </section>
     </main>
-    <div id="contact_modal">
+    <section id="contact_modal">
       <div class="modal">
         <header>
-          <h2 id="form_title">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h1 id="form_title">Contactez-moi</h1>
+          <img
+            src="assets/icons/close.svg"
+            onclick="closeModal()"
+            alt="Close Contact form"
+            tabindex="0"
+            class="close_icon_modal"
+          />
         </header>
         <form id="form">
           <div>
             <label>Prénom</label>
-            <input id="first_name" />
+            <input id="first_name" alt="First name" aria-labelledby="3" />
             <label>Nom</label>
-            <input id="last_name" />
+            <input id="last_name" alt="Last name" aria-labelledby="5" />
             <label>Email</label>
-            <input id="mail" />
+            <input id="mail" alt="Email" aria-labelledby="7" />
             <label>Votre Message</label>
-            <textarea id="message"></textarea>
+            <textarea
+              id="message"
+              alt="Your message"
+              aria-labelledby="9"
+            ></textarea>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" alt="Send">Envoyer</button>
         </form>
       </div>
-    </div>
-    <div class="lightbox">
+    </section>
+    <section class="lightbox" aria-label="image closeup view">
       <header>
-        <img src="assets/icons/close2.svg" onclick="closeLightbox()" />
+        <img
+          src="assets/icons/close2.svg"
+          onclick="closeLightbox()"
+          alt="close dialog"
+          tabindex="0"
+          class="close_icon_lightbox"
+        />
       </header>
       <div class="media_vue">
-        <img src="assets/icons/fleche-gauche.png" alt="" onclick="showPrev()" />
+        <img
+          src="assets/icons/fleche-gauche.png"
+          onclick="showPrev()"
+          alt="Previous image"
+          tabindex="0"
+          class="prev_arrow_icon_lightbox"
+        />
         <div class="media_zoom"></div>
-        <img src="assets/icons/fleche-droite.png" alt="" onclick="showNext()" />
+        <img
+          src="assets/icons/fleche-droite.png"
+          onclick="showNext()"
+          alt="Next image"
+          tabindex="0"
+          class="next_arrow_icon_lightbox"
+        />
       </div>
-    </div>
-    <div id="like_counter_and_price"></div>
+    </section>
+    <footer id="like_counter_and_price"></footer>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="scripts/templates/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>

@@ -64,7 +64,9 @@ async function filter(data) {
     }
     if (sortedMediaArray) {
       displayDataMedia(sortedMediaArray.map(arrayItemsToMediaObject));
+      displayMedia();
     }
   });
   displayDataMedia(mediaArray.map(arrayItemsToMediaObject));
+  displayMedia();
 }

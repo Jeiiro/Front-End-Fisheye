@@ -16,4 +16,42 @@ function toggleLikes(e) {
     const totalLikesCountNumber = parseInt(totalLikesCount.textContent);
     totalLikesCount.textContent = totalLikesCountNumber + 1;
   }
+  updateMediaDisplay();
+}
+function getMediaLikes() {
+  const mediaElements = document.querySelectorAll(".media");
+  const mediaLikes = [];
+
+  mediaElements.forEach((media) => {
+    const likeContainer = media.querySelector(".like_container");
+    const likesElement = likeContainer.querySelector("p");
+    const likes = parseInt(likesElement.textContent, 10);
+
+    mediaLikes.push({
+      media: media,
+      likes: likes,
+    });
+  });
+
+  return mediaLikes;
+}
+
+function sortMediaByLikes(mediaLikes) {
+  return mediaLikes.sort((a, b) => b.likes - a.likes);
+}
+
+function displaySortedMedia(mediaLikes) {
+  const mediaContainer = document.querySelector(".photographer_media");
+
+  mediaContainer.innerHTML = "";
+
+  mediaLikes.forEach((item) => {
+    mediaContainer.appendChild(item.media);
+  });
+}
+
+function updateMediaDisplay() {
+  const mediaLikes = getMediaLikes();
+  const sortedMedia = sortMediaByLikes(mediaLikes);
+  displaySortedMedia(sortedMedia);
 }

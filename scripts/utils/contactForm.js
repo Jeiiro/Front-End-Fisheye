@@ -6,6 +6,9 @@ function displayModal() {
   const formTitle = document.getElementById("form_title");
   const photographerName = document.querySelector(".photographer_name");
   formTitle.innerHTML += " " + photographerName.textContent;
+  modal.setAttribute("alt", "Contact Me " + photographerName.textContent);
+  modal.setAttribute("aria-labelledby", "2");
+  eventListenerModal();
 }
 
 function closeModal() {
@@ -13,6 +16,8 @@ function closeModal() {
   modal.style.display = "none";
   const main = document.getElementById("main");
   main.style.opacity = "1";
+  const formTitle = document.getElementById("form_title");
+  formTitle.innerHTML = "Contactez-moi";
 }
 
 let form = document.getElementById("form");
@@ -42,5 +47,21 @@ form.addEventListener("submit", (e) => {
     mail.value = "";
     message.value = "";
     alert("Votre message a bien été envoyé!");
+  }
+});
+function eventListenerModal() {
+  let closeModal = document.querySelector(".close_icon_modal");
+  closeModal.focus();
+}
+function returnFocus() {
+  const logo = document.querySelector(".logo");
+  logo.focus();
+}
+
+const closeIconModal = document.querySelector(".close_icon_modal");
+
+closeIconModal.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    closeModal();
   }
 });

@@ -1,4 +1,4 @@
-function photographerTemplate(data) {
+function photographerTemplate(data, tabindexStart) {
   const { name, portrait, id, city, country, tagline, price } = data;
 
   const picture = `assets/photographers/${portrait}`;
@@ -8,8 +8,11 @@ function photographerTemplate(data) {
     const lien = document.createElement("a");
     lien.setAttribute("class", "photographer_container");
     lien.setAttribute("id", id);
+    lien.setAttribute("tabindex", tabindexStart);
+    lien.setAttribute("alt", name);
     const img = document.createElement("img");
     img.setAttribute("src", picture);
+    img.setAttribute("alt", "#");
     const h2 = document.createElement("h2");
     h2.setAttribute("class", "photographer_name");
     h2.textContent = name;
@@ -42,9 +45,9 @@ function photographerTemplatePageHeader(data) {
     const header = document.querySelector(".photograph-header");
     const info = document.createElement("div");
     info.setAttribute("class", "photograph-info");
-    const h2 = document.createElement("h2");
-    h2.setAttribute("class", "photographer_name");
-    h2.textContent = name;
+    const h1 = document.createElement("h1");
+    h1.setAttribute("class", "photographer_name");
+    h1.textContent = name;
     const location = document.createElement("p");
     location.textContent = `${city}, ${country}`;
     location.setAttribute("class", "location");
@@ -54,11 +57,14 @@ function photographerTemplatePageHeader(data) {
     const button = document.createElement("button");
     button.textContent = "Contactez-moi";
     button.setAttribute("class", "contact_button");
+    button.setAttribute("aria-label", "Contact me");
     button.setAttribute("onclick", "displayModal()");
+    button.setAttribute("tabindex", "2");
     const img = document.createElement("img");
     img.setAttribute("src", picture);
+    img.setAttribute("alt", name);
     header.appendChild(info);
-    info.appendChild(h2);
+    info.appendChild(h1);
     info.appendChild(location);
     info.appendChild(description);
     header.appendChild(button);
@@ -68,7 +74,7 @@ function photographerTemplatePageHeader(data) {
 
   return { getUserPageDOM };
 }
-function photographerTemplatePageMedia(data) {
+function photographerTemplatePageMedia(data, tabindexStart) {
   const { id, photographerId, title, image, likes, date, price, video } = data;
 
   const picture = `assets/images/${photographerId}/${image}`;
@@ -76,13 +82,15 @@ function photographerTemplatePageMedia(data) {
   const heart = `assets/icons/heart-solid.png`;
 
   function getUserMediaDOM() {
-    const media = document.createElement("div");
+    const media = document.createElement("article");
     media.setAttribute("id", id);
     media.setAttribute("class", "media");
     if (image) {
       const photo = document.createElement("img");
       photo.setAttribute("src", picture);
       photo.setAttribute("class", "media_access");
+      photo.setAttribute("alt", title + ", closeup view");
+      photo.setAttribute("tabindex", tabindexStart);
       const firstcontainer = document.createElement("div");
       firstcontainer.setAttribute("class", "info_container");
       const secondcontainer = document.createElement("div");
@@ -97,6 +105,7 @@ function photographerTemplatePageMedia(data) {
       likeIcon.setAttribute("class", "fav");
       likeIcon.setAttribute("onclick", "toggleLikes(this)");
       likeIcon.setAttribute("src", heart);
+      likeIcon.setAttribute("alt", "likes");
       media.appendChild(photo);
       media.appendChild(firstcontainer);
       firstcontainer.appendChild(name);
@@ -108,6 +117,8 @@ function photographerTemplatePageMedia(data) {
       film.setAttribute("src", mp4);
       film.setAttribute("class", "media_access");
       film.setAttribute("autoplay", false);
+      film.setAttribute("alt", title + ", closeup view");
+      film.setAttribute("tabindex", tabindexStart);
       const firstcontainer = document.createElement("div");
       firstcontainer.setAttribute("class", "info_container");
       const secondcontainer = document.createElement("div");
@@ -122,6 +133,7 @@ function photographerTemplatePageMedia(data) {
       likeIcon.setAttribute("class", "fav");
       likeIcon.setAttribute("onclick", "toggleLikes(this)");
       likeIcon.setAttribute("src", heart);
+      likeIcon.setAttribute("alt", "likes");
       media.appendChild(film);
       media.appendChild(firstcontainer);
       firstcontainer.appendChild(name);
