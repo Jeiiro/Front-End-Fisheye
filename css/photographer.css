@@ -219,19 +219,64 @@ form textarea {
   margin: 20px 100px 60px 100px;
 }
 .sort_media label {
+  display: flex;
+  gap: 1em;
+  align-items: center;
   color: #000000;
   font-size: 18px;
   font-weight: bold;
 }
-.sort_media select {
+.sort_media button {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-around;
   color: #ffffff;
   background-color: #901c1c;
   border: none;
   border-radius: 5px;
-  padding: 10px;
+  width: 170px;
+  height: 70px;
+  font-size: 18px;
+  font-weight: bold;
 }
-.sort_media select:focus {
+
+.sort_media button:hover {
+  background-color: #db8876;
+  color: black;
+}
+.sort_media button:focus {
   outline: 2px solid black;
+  background-color: #db8876;
+  color: black;
+}
+
+.sort_media ul {
+  list-style-type: none;
+  color: #ffffff;
+  background-color: #901c1c;
+  position: absolute;
+  top: 25.3%;
+  left: 13.9%;
+  border-radius: 5px;
+  display: none;
+  flex-direction: column;
+  width: 170px;
+}
+
+.sort_media ul li {
+  display: flex;
+  align-items: center;
+  margin: 0px 20px;
+  height: 70px;
+  border-bottom: 1px solid #fafafa;
+}
+.sort_media ul li:first-child {
+  display: flex;
+  justify-content: space-between;
+}
+.sort_media ul li:last-child {
+  border-bottom: none;
 }
 
 .photograph-info h1 {

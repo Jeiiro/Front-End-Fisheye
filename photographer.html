@@ -8,6 +8,10 @@
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
     <title>Fisheye - photographe</title>
   </head>
   <body>
@@ -26,12 +30,30 @@
       <section class="photograph-header"></section>
       <div class="sort_media">
         <label
-          >Trier par :
-          <select alt="Order by" tabindex="3">
+          >Trier par
+
+          <button class="dropdown_button" type="button" tabindex="3">
+            <span class="dropdown_value">Date</span>
+            <span class="dropdown_button_icon"
+              ><i class="fa fa-chevron-down"></i
+            ></span>
+          </button>
+          <ul class="dropdown_list">
+            <li id="popularity" class="dropdown_item">
+              Popularité
+              <i
+                class="dropdown__icon fa-solid fa-chevron-up"
+                aria-hidden="true"
+              ></i>
+            </li>
+            <li id="date" class="dropdown_item">Date</li>
+            <li id="title" class="dropdown_item">Titre</li>
+          </ul>
+          <!-- <select alt="Order by" tabindex="3">
             <option value="likes" id="popularity">Popularité</option>
             <option value="date" selected id="date">Date</option>
             <option value="title" id="name">Titre</option>
-          </select>
+          </select> -->
         </label>
       </div>
       <section class="photographer_media">
