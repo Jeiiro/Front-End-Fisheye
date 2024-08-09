@@ -217,18 +217,18 @@ form textarea {
 
 .sort_media {
   margin: 20px 100px 60px 100px;
-}
-.sort_media label {
+  height: 70px;
   display: flex;
   gap: 1em;
   align-items: center;
+}
+.sort_media label {
   color: #000000;
   font-size: 18px;
   font-weight: bold;
 }
 .sort_media button {
   display: flex;
-  position: relative;
   align-items: center;
   justify-content: space-around;
   color: #ffffff;
@@ -239,6 +239,9 @@ form textarea {
   height: 70px;
   font-size: 18px;
   font-weight: bold;
+}
+.sort_media button.hide {
+  display: none;
 }
 
 .sort_media button:hover {
@@ -256,12 +259,16 @@ form textarea {
   color: #ffffff;
   background-color: #901c1c;
   position: absolute;
-  top: 25.3%;
-  left: 13.9%;
+  top: 25.5%;
+  left: 9.85%;
   border-radius: 5px;
+  z-index: 1;
   display: none;
   flex-direction: column;
   width: 170px;
+}
+.sort_media ul.show {
+  display: block;
 }
 
 .sort_media ul li {
@@ -269,6 +276,7 @@ form textarea {
   align-items: center;
   margin: 0px 20px;
   height: 70px;
+  cursor: pointer;
   border-bottom: 1px solid #fafafa;
 }
 .sort_media ul li:first-child {

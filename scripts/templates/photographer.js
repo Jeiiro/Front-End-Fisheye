@@ -37,7 +37,7 @@ function photographerTemplate(data, tabindexStart) {
 }
 
 function photographerTemplatePageHeader(data) {
-  const { name, portrait, id, city, country, tagline, price } = data;
+  const { name, portrait, city, country, tagline } = data;
 
   const picture = `assets/photographers/${portrait}`;
 
@@ -75,7 +75,7 @@ function photographerTemplatePageHeader(data) {
   return { getUserPageDOM };
 }
 function photographerTemplatePageMedia(data, tabindexStart) {
-  const { id, photographerId, title, image, likes, date, price, video } = data;
+  const { id, photographerId, title, image, likes, video } = data;
 
   const picture = `assets/images/${photographerId}/${image}`;
   const mp4 = `assets/images/${photographerId}/${video}`;

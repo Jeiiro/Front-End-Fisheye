@@ -1,5 +1,7 @@
 async function filter(data) {
-  const filterSection = document.querySelector(".sort_media");
+  const dropdownButton = document.querySelector(".dropdown_button");
+  const dropdownList = document.querySelector(".dropdown_list");
+  const dropdownValue = document.querySelector(".dropdown_value");
   const params = new URL(document.location).searchParams;
   const id = params.get("id");
   const mediaArray = [];
@@ -50,23 +52,59 @@ async function filter(data) {
     return mediaArray;
   }
 
-  filterSection.addEventListener("change", (e) => {
-    let sortedMediaArray;
-    if (e.target.value === "likes") {
-      sortedMediaArray = sortAndDisplay("likes");
-      console.log("likes");
-    } else if (e.target.value === "date") {
-      sortedMediaArray = sortAndDisplay("date");
-      console.log("date");
-    } else if (e.target.value === "title") {
-      sortedMediaArray = sortAndDisplay("title");
-      console.log("titre");
-    }
-    if (sortedMediaArray) {
-      displayDataMedia(sortedMediaArray.map(arrayItemsToMediaObject));
-      displayMedia();
-    }
+  dropdownButton.addEventListener("click", () => {
+    dropdownList.classList.toggle("show");
+    dropdownButton.classList.toggle("hide");
   });
+
+  document.querySelectorAll(".dropdown_item").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const selectedSort = e.target.id;
+      let sortedMediaArray;
+
+      if (selectedSort === "popularity") {
+        sortedMediaArray = sortAndDisplay("likes");
+        dropdownValue.textContent = "Popularité";
+      } else if (selectedSort === "date") {
+        sortedMediaArray = sortAndDisplay("date");
+        dropdownValue.textContent = "Date";
+      } else if (selectedSort === "title") {
+        sortedMediaArray = sortAndDisplay("title");
+        dropdownValue.textContent = "Titre";
+      }
+
+      if (sortedMediaArray) {
+        displayDataMedia(sortedMediaArray.map(arrayItemsToMediaObject));
+        displayMedia();
+      }
+    });
+    item.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const selectedSort = e.target.id;
+        let sortedMediaArray;
+
+        if (selectedSort === "popularity") {
+          sortedMediaArray = sortAndDisplay("likes");
+          dropdownValue.textContent = "Popularité";
+        } else if (selectedSort === "date") {
+          sortedMediaArray = sortAndDisplay("date");
+          dropdownValue.textContent = "Date";
+        } else if (selectedSort === "title") {
+          sortedMediaArray = sortAndDisplay("title");
+          dropdownValue.textContent = "Titre";
+        }
+
+        if (sortedMediaArray) {
+          displayDataMedia(sortedMediaArray.map(arrayItemsToMediaObject));
+          displayMedia();
+        }
+
+        dropdownList.classList.remove("show");
+        dropdownButton.classList.remove("hide");
+      }
+    });
+  });
+
   displayDataMedia(mediaArray.map(arrayItemsToMediaObject));
   displayMedia();
 }

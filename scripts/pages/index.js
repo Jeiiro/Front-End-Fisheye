@@ -17,6 +17,7 @@ async function displayData(photographers) {
       photographer,
       tabindexCounter
     );
+    console.log(photographerTemplate(photographer));
     const userCardDOM = photographerModel.getUserCardDOM();
     photographersSection.appendChild(userCardDOM);
     tabindexCounter++;
@@ -25,16 +26,17 @@ async function displayData(photographers) {
 
 async function init() {
   const { photographers } = await getPhotographers();
-  displayData(photographers);
+  await displayData(photographers);
 }
 
 init();
 
 async function openPhotographerPage() {
-  const { photographers } = await getPhotographers();
+  await getPhotographers();
   const photographersContainer = document.querySelectorAll(
     ".photographer_container"
   );
+  console.log(photographersContainer);
   photographersContainer.forEach((photographer) => {
     photographer.addEventListener("click", () => {
       console.log(photographer.id);

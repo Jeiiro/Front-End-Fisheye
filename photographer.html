@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8" />
+    <meta name="viewport" charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
@@ -17,7 +17,7 @@
   <body>
     <header>
       <nav>
-        <a href="index.html" tabindex="1">
+        <a href="index.html" tabindex="1" id="logo">
           <img
             src="assets/images/logo.png"
             class="logo"
@@ -29,32 +29,29 @@
     <main id="main">
       <section class="photograph-header"></section>
       <div class="sort_media">
-        <label
-          >Trier par
-
-          <button class="dropdown_button" type="button" tabindex="3">
-            <span class="dropdown_value">Date</span>
-            <span class="dropdown_button_icon"
-              ><i class="fa fa-chevron-down"></i
-            ></span>
-          </button>
-          <ul class="dropdown_list">
-            <li id="popularity" class="dropdown_item">
-              Popularité
-              <i
-                class="dropdown__icon fa-solid fa-chevron-up"
-                aria-hidden="true"
-              ></i>
-            </li>
-            <li id="date" class="dropdown_item">Date</li>
-            <li id="title" class="dropdown_item">Titre</li>
-          </ul>
-          <!-- <select alt="Order by" tabindex="3">
-            <option value="likes" id="popularity">Popularité</option>
-            <option value="date" selected id="date">Date</option>
-            <option value="title" id="name">Titre</option>
-          </select> -->
-        </label>
+        <label for="dropdown_button"> Trier par </label>
+        <button
+          class="dropdown_button"
+          id="dropdown_button"
+          type="button"
+          tabindex="3"
+        >
+          <span class="dropdown_value">Date</span>
+          <span class="dropdown_button_icon"
+            ><p class="fa fa-chevron-down"></p>
+          </span>
+        </button>
+        <ul class="dropdown_list">
+          <li id="popularity" class="dropdown_item" tabindex="4">
+            Popularité
+            <p
+              class="dropdown__icon fa-solid fa-chevron-up"
+              aria-hidden="true"
+            ></p>
+          </li>
+          <li id="date" class="dropdown_item" tabindex="4">Date</li>
+          <li id="title" class="dropdown_item" tabindex="4">Titre</li>
+        </ul>
       </div>
       <section class="photographer_media">
         <div class="user_media"></div>
@@ -74,18 +71,20 @@
         </header>
         <form id="form">
           <div>
-            <label>Prénom</label>
-            <input id="first_name" alt="First name" aria-labelledby="3" />
-            <label>Nom</label>
-            <input id="last_name" alt="Last name" aria-labelledby="5" />
-            <label>Email</label>
-            <input id="mail" alt="Email" aria-labelledby="7" />
-            <label>Votre Message</label>
-            <textarea
-              id="message"
-              alt="Your message"
-              aria-labelledby="9"
-            ></textarea>
+            <label for="first_name">Prénom</label>
+            <input id="first_name" aria-labelledby="3" />
+            <label for="last_name">Nom</label>
+            <input id="last_name" aria-labelledby="5" />
+            <label for="mail">Email</label>
+            <input id="mail" aria-labelledby="7" />
+            <label for="message"
+              >Votre Message
+              <textarea
+                id="message"
+                alt="Your message"
+                aria-labelledby="9"
+              ></textarea>
+            </label>
           </div>
           <button class="contact_button" alt="Send">Envoyer</button>
         </form>

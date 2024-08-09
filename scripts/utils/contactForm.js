@@ -54,7 +54,7 @@ function eventListenerModal() {
   closeModal.focus();
 }
 function returnFocus() {
-  const logo = document.querySelector(".logo");
+  const logo = document.querySelector("#logo");
   logo.focus();
 }
 
@@ -62,6 +62,7 @@ const closeIconModal = document.querySelector(".close_icon_modal");
 
 closeIconModal.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
+    returnFocus();
     closeModal();
   }
 });

@@ -20,13 +20,12 @@ async function getMedia() {
 }
 
 async function displayData(photographers) {
-  const photographersSection = document.querySelector(".photograph-header");
   const params = new URL(document.location).searchParams;
   const id = params.get("id");
   photographers.forEach((photographer) => {
     if (id == photographer.id) {
       const photographerModel = photographerTemplatePageHeader(photographer);
-      const userPageDOM = photographerModel.getUserPageDOM();
+      photographerModel.getUserPageDOM();
     }
   });
 }
@@ -60,12 +59,12 @@ async function displayTotalLikes() {
   likeCounter.setAttribute("id", "total_likes");
   const likeIcon = document.createElement("img");
   likeIcon.setAttribute("src", heart);
+  likeIcon.setAttribute("alt", "likes");
   contain.appendChild(likeCounter);
   contain.appendChild(likeIcon);
   container.appendChild(contain);
 }
 async function displayPricePerDay(photographers) {
-  const pricePerDay = document.getElementById("price_per_day");
   const params = new URL(document.location).searchParams;
   const id = params.get("id");
   let photographerPrice = 0;
