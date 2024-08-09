@@ -77,6 +77,8 @@ async function filter(data) {
         displayDataMedia(sortedMediaArray.map(arrayItemsToMediaObject));
         displayMedia();
       }
+      dropdownList.classList.toggle("show");
+      dropdownButton.classList.toggle("hide");
     });
     item.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
@@ -99,8 +101,8 @@ async function filter(data) {
           displayMedia();
         }
 
-        dropdownList.classList.remove("show");
-        dropdownButton.classList.remove("hide");
+        dropdownList.classList.toggle("show");
+        dropdownButton.classList.toggle("hide");
       }
     });
   });

@@ -221,6 +221,7 @@ form textarea {
   display: flex;
   gap: 1em;
   align-items: center;
+  position: relative;
 }
 .sort_media label {
   color: #000000;
@@ -239,6 +240,7 @@ form textarea {
   height: 70px;
   font-size: 18px;
   font-weight: bold;
+  cursor: pointer;
 }
 .sort_media button.hide {
   display: none;
@@ -259,12 +261,11 @@ form textarea {
   color: #ffffff;
   background-color: #901c1c;
   position: absolute;
-  top: 25.5%;
-  left: 9.85%;
+  top: 7.5%;
+  left: 4.85%;
   border-radius: 5px;
   z-index: 1;
   display: none;
-  flex-direction: column;
   width: 170px;
 }
 .sort_media ul.show {
