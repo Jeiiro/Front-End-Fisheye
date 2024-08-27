@@ -1,3 +1,5 @@
+// Fonction pour gérer les clics sur les icônes de like
+// eslint-disable-next-line no-unused-vars
 function toggleLikes(e) {
   let likesCount = e.previousElementSibling;
   let currentLikesCount = parseInt(likesCount.textContent);
@@ -18,6 +20,7 @@ function toggleLikes(e) {
   }
   updateMediaDisplay();
 }
+// Fonction pour récupérer les likes de tous les médias
 function getMediaLikes() {
   const mediaElements = document.querySelectorAll(".media");
   const mediaLikes = [];
@@ -35,11 +38,11 @@ function getMediaLikes() {
 
   return mediaLikes;
 }
-
+// Fonction pour trier les médias par nombre de likes (du plus grand au plus petit)
 function sortMediaByLikes(mediaLikes) {
   return mediaLikes.sort((a, b) => b.likes - a.likes);
 }
-
+// Fonction pour afficher les médias triés
 function displaySortedMedia(mediaLikes) {
   const mediaContainer = document.querySelector(".photographer_media");
 
@@ -49,7 +52,7 @@ function displaySortedMedia(mediaLikes) {
     mediaContainer.appendChild(item.media);
   });
 }
-
+// Fonction pour mettre à jour l'affichage des médias en fonction des likes
 function updateMediaDisplay() {
   const mediaLikes = getMediaLikes();
   const sortedMedia = sortMediaByLikes(mediaLikes);

@@ -1,3 +1,5 @@
+// Fonction asynchrone pour filtrer et trier les médias en fonction des critères sélectionnés
+// eslint-disable-next-line no-unused-vars
 async function filter(data) {
   const dropdownButton = document.querySelector(".dropdown_button");
   const dropdownList = document.querySelector(".dropdown_list");
@@ -5,6 +7,7 @@ async function filter(data) {
   const params = new URL(document.location).searchParams;
   const id = params.get("id");
   const mediaArray = [];
+   // Filtrer les médias en fonction de l'ID du photographe
   data.forEach((data) => {
     if (id == data.photographerId) {
       const { id, photographerId, title, image, likes, date, price, video } =
@@ -22,8 +25,9 @@ async function filter(data) {
       mediaArray.push(arrayItems);
     }
   });
-
+// Trier les médias par date, du plus récent au plus ancien
   mediaArray.sort((a, b) => new Date(b[5]) - new Date(a[5]));
+    // Fonction pour convertir un tableau en objet média
   function arrayItemsToMediaObject(array) {
     return {
       id: array[0],
@@ -36,7 +40,7 @@ async function filter(data) {
       video: array[7],
     };
   }
-
+// Fonction pour trier les médias en fonction du critère choisi
   function sortAndDisplay(sortBy) {
     if (mediaArray.length === 0) return [];
     mediaArray.sort((a, b) => {
@@ -51,13 +55,20 @@ async function filter(data) {
 
     return mediaArray;
   }
-
+// Configurer les attributs d'accessibilité pour le bouton du dropdown
+  dropdownButton.setAttribute("aria-haspopup", "true");
+  dropdownButton.setAttribute("aria-expanded", "false");
+  dropdownButton.setAttribute("aria-controls", "dropdown_list");
+  // Ajouter un événement de clic pour afficher/masquer la liste déroulante
   dropdownButton.addEventListener("click", () => {
+    const isExpanded = dropdownButton.getAttribute("aria-expanded") === "true";
     dropdownList.classList.toggle("show");
     dropdownButton.classList.toggle("hide");
+    dropdownButton.setAttribute("aria-expanded", !isExpanded);
   });
-
+// Ajouter des événements de clic et de touche pour chaque élément de la liste déroulante
   document.querySelectorAll(".dropdown_item").forEach((item) => {
+    item.setAttribute("role", "option");
     item.addEventListener("click", (e) => {
       const selectedSort = e.target.id;
       let sortedMediaArray;
@@ -72,14 +83,19 @@ async function filter(data) {
         sortedMediaArray = sortAndDisplay("title");
         dropdownValue.textContent = "Titre";
       }
-
+  // Afficher les médias triés
       if (sortedMediaArray) {
+        // eslint-disable-next-line no-undef
         displayDataMedia(sortedMediaArray.map(arrayItemsToMediaObject));
+        // eslint-disable-next-line no-undef
         displayMedia();
       }
+       // Masquer la liste déroulante et réinitialiser l'état du bouton
       dropdownList.classList.toggle("show");
       dropdownButton.classList.toggle("hide");
+      dropdownButton.setAttribute("aria-expanded", "false");
     });
+    // Ajouter un événement de touche pour permettre la sélection avec la touche "Enter"
     item.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
         const selectedSort = e.target.id;
@@ -95,18 +111,23 @@ async function filter(data) {
           sortedMediaArray = sortAndDisplay("title");
           dropdownValue.textContent = "Titre";
         }
-
+// Afficher les médias triés
         if (sortedMediaArray) {
+          // eslint-disable-next-line no-undef
           displayDataMedia(sortedMediaArray.map(arrayItemsToMediaObject));
+          // eslint-disable-next-line no-undef
           displayMedia();
         }
-
+    // Masquer la liste déroulante et réinitialiser l'état du bouton
         dropdownList.classList.toggle("show");
         dropdownButton.classList.toggle("hide");
+        dropdownButton.setAttribute("aria-expanded", "false");
       }
     });
   });
-
+// Afficher les médias filtrés et triés initialement
+  // eslint-disable-next-line no-undef
   displayDataMedia(mediaArray.map(arrayItemsToMediaObject));
+  // eslint-disable-next-line no-undef
   displayMedia();
 }

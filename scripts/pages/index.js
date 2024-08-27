@@ -1,3 +1,4 @@
+// Fonction pour récupérer les photographes
 async function getPhotographers() {
   let photographers = [];
   const responsePhotographers = await fetch("data/photographers.json");
@@ -9,21 +10,27 @@ async function getPhotographers() {
   };
 }
 
+// Fonction pour afficher les données des photographes
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
   let tabindexCounter = 2;
+
   photographers.forEach((photographer) => {
+    // eslint-disable-next-line no-undef
     const photographerModel = photographerTemplate(
       photographer,
       tabindexCounter
     );
-    console.log(photographerTemplate(photographer));
+
     const userCardDOM = photographerModel.getUserCardDOM();
+
+    
     photographersSection.appendChild(userCardDOM);
     tabindexCounter++;
   });
 }
 
+// Fonction d'initialisation
 async function init() {
   const { photographers } = await getPhotographers();
   await displayData(photographers);
@@ -31,25 +38,22 @@ async function init() {
 
 init();
 
+// Fonction pour ouvrir la page du photographe au clic ou au clavier
 async function openPhotographerPage() {
   await getPhotographers();
-  const photographersContainer = document.querySelectorAll(
-    ".photographer_container"
-  );
-  console.log(photographersContainer);
+  const photographersContainer = document.querySelectorAll(".photographer_container");
+
   photographersContainer.forEach((photographer) => {
     photographer.addEventListener("click", () => {
-      console.log(photographer.id);
       window.location.href = `photographer.html?id=${photographer.id}`;
     });
-  });
-  photographersContainer.forEach((photographer) => {
+
     photographer.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
-        console.log(photographer.id);
         window.location.href = `photographer.html?id=${photographer.id}`;
       }
     });
+
   });
 }
 

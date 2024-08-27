@@ -49,7 +49,7 @@ body {
   height: 42px;
 }
 
-.photograph-header {
+.photograph_header {
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
@@ -59,7 +59,7 @@ body {
   align-items: center;
 }
 
-.photograph-header img {
+.photograph_header img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -80,11 +80,11 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
-.photograph-header .contact_button:hover {
+.photograph_header .contact_button:hover {
   background-color: #db8876;
   color: black;
 }
-.photograph-header .contact_button:focus {
+.photograph_header .contact_button:focus {
   background-color: #db8876;
   color: black;
 }
@@ -288,16 +288,16 @@ form textarea {
   border-bottom: none;
 }
 
-.photograph-info h1 {
+.photograph_info h1 {
   color: #d3573c;
   font-size: 64px;
 }
 
-.photograph-info .location {
+.photograph_info .location {
   color: #901c1c;
   font-size: 24px;
 }
-.photograph-info .descrption {
+.photograph_info .descrption {
   color: #525252;
   font-size: 18px;
 }

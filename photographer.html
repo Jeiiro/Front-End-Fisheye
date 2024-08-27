@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Page photographe de Fisheye" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta name="viewport" charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
@@ -16,18 +18,18 @@
   </head>
   <body>
     <header>
-      <nav>
-        <a href="index.html" tabindex="1" id="logo">
+      <nav role="navigation" aria-label="Navigation principale">
+        <a href="index.html" tabindex="1" id="logo" aria-label="Retour à l'accueil">
           <img
             src="assets/images/logo.png"
             class="logo"
-            alt="Fisheye Home page"
+            alt="Logo Fisheye"
           />
         </a>
       </nav>
     </header>
     <main id="main">
-      <section class="photograph-header"></section>
+      <section class="photograph_header"></section>
       <div class="sort_media">
         <label for="dropdown_button"> Trier par </label>
         <button
@@ -35,86 +37,83 @@
           id="dropdown_button"
           type="button"
           tabindex="3"
+          aria-haspopup="true"
+          aria-expanded="false"
         >
           <span class="dropdown_value">Date</span>
-          <span class="dropdown_button_icon"
-            ><p class="fa fa-chevron-down"></p>
+          <span class="dropdown_button_icon" aria-hidden="true">
+            <p class="fa fa-chevron-down"></p>
           </span>
         </button>
-        <ul class="dropdown_list">
-          <li id="popularity" class="dropdown_item" tabindex="4">
+        <ul class="dropdown_list" aria-labelledby="dropdown_button">
+          <li id="popularity" class="dropdown_item" tabindex="4" role="option" aria-selected="false">
             Popularité
-            <p
-              class="dropdown__icon fa-solid fa-chevron-up"
-              aria-hidden="true"
-            ></p>
+            <p class="dropdown__icon fa-solid fa-chevron-up" aria-hidden="true"></p>
           </li>
-          <li id="date" class="dropdown_item" tabindex="4">Date</li>
-          <li id="title" class="dropdown_item" tabindex="4">Titre</li>
+          <li id="date" class="dropdown_item" tabindex="4" role="option" aria-selected="true">Date</li>
+          <li id="title" class="dropdown_item" tabindex="4" role="option" aria-selected="false">Titre</li>
         </ul>
       </div>
       <section class="photographer_media">
         <div class="user_media"></div>
       </section>
     </main>
-    <section id="contact_modal">
+    <section id="contact_modal" role="dialog" aria-labelledby="form_title" aria-hidden="true">
       <div class="modal">
         <header>
           <h1 id="form_title">Contactez-moi</h1>
           <img
             src="assets/icons/close.svg"
             onclick="closeModal()"
-            alt="Close Contact form"
+            alt="Fermer le formulaire de contact"
             tabindex="0"
             class="close_icon_modal"
+            aria-label="Fermer le formulaire de contact"
           />
         </header>
-        <form id="form">
+        <form id="form" aria-labelledby="form_title">
           <div>
             <label for="first_name">Prénom</label>
-            <input id="first_name" aria-labelledby="3" />
+            <input id="first_name" name="first_name" aria-required="true" autocomplete="nope"/>
             <label for="last_name">Nom</label>
-            <input id="last_name" aria-labelledby="5" />
+            <input id="last_name" name="last_name" aria-required="true" autocomplete="nope"/>
             <label for="mail">Email</label>
-            <input id="mail" aria-labelledby="7" />
-            <label for="message"
-              >Votre Message
-              <textarea
-                id="message"
-                alt="Your message"
-                aria-labelledby="9"
-              ></textarea>
-            </label>
+            <input id="mail" name="email" type="email" aria-required="true" autocomplete="nope"/>
+            <label for="message">Votre Message</label>
+            <textarea id="message" name="message" aria-required="true" autocomplete="nope"></textarea>
           </div>
-          <button class="contact_button" alt="Send">Envoyer</button>
+          <button class="contact_button" type="submit">Envoyer</button>
         </form>
       </div>
     </section>
-    <section class="lightbox" aria-label="image closeup view">
+    <section class="lightbox" aria-label="Agrandissement de l'image" aria-hidden="true">
       <header>
         <img
           src="assets/icons/close2.svg"
           onclick="closeLightbox()"
-          alt="close dialog"
+          alt="Fermer la lightbox"
           tabindex="0"
           class="close_icon_lightbox"
+          aria-label="Fermer la lightbox"
         />
       </header>
       <div class="media_vue">
         <img
           src="assets/icons/fleche-gauche.png"
           onclick="showPrev()"
-          alt="Previous image"
+          alt="Image précédente"
           tabindex="0"
           class="prev_arrow_icon_lightbox"
+          aria-label="Image précédente"
         />
         <div class="media_zoom"></div>
         <img
           src="assets/icons/fleche-droite.png"
           onclick="showNext()"
-          alt="Next image"
+          alt="Image suivante"
           tabindex="0"
           class="next_arrow_icon_lightbox"
+          aria-label="Image suivante"
         />
       </div>
     </section>
