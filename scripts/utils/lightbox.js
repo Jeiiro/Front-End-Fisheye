@@ -25,37 +25,54 @@ function closeLightbox() {
   if (lightboxVideo) {
     lightboxVideo.remove();
   }
+  const lightboxTitle = document.querySelector(".title_picture_zoom");
+  if (lightboxTitle) {
+    lightboxTitle.remove();
+  }
 }
 // Fonction pour afficher les éléments médias dans la lightbox
 // eslint-disable-next-line no-unused-vars
 async function displayMedia() {
-  mediaElements = document.querySelectorAll(".media_access");
-  mediaElements.forEach((media, index) => {
-    media.addEventListener("click", () => {
+  mediaElements = document.querySelectorAll(".media");
+  console.log("mediaElements", mediaElements);
+  mediaElements.forEach((media, index) => {     
+    media.firstChild.addEventListener("click", () => {
       currentIndex = index;
-      if (media.localName === "img") {
-        const src = media.src;
-        const alt = media.alt;
+ 
+      if (media.firstChild.localName === "img") {
+        console.log("media.children.localName");
+        const src = media.firstChild.src;
+        const alt = media.firstChild.alt;
+        const title = media.lastChild.firstChild.innerHTML;
         const lightbox = document.querySelector(".media_zoom");
         const lightboxImage = document.createElement("img");
+        const lightboxImageTitle = document.createElement("p");
+        lightboxImageTitle.textContent = title;
+        lightboxImageTitle.setAttribute("class", "title_picture_zoom");
         lightboxImage.setAttribute("src", src);
         lightboxImage.setAttribute("class", "lightbox_img");
         lightboxImage.setAttribute("alt", alt);
         lightboxImage.setAttribute("tabindex", 0);
         lightbox.appendChild(lightboxImage);
+        lightbox.appendChild(lightboxImageTitle);
         displayLightbox();
         eventListenerLightbox();
-      } else if (media.localName === "video") {
-        const src = media.src;
-        const alt = media.alt;
+      } else if (media.firstChild.localName === "video") {
+        const src = media.firstChild.src;
+        const alt = media.firstChild.alt;
+        const title = media.lastChild.firstChild.innerHTML;
         const lightbox = document.querySelector(".media_zoom");
         const lightboxImage = document.createElement("video");
+        const lightboxImageTitle = document.createElement("p");
+        lightboxImageTitle.textContent = title;
+        lightboxImageTitle.setAttribute("class", "title_picture_zoom");
         lightboxImage.setAttribute("src", src);
         lightboxImage.setAttribute("class", "lightbox_video");
         lightboxImage.setAttribute("controls", "controls");
         lightboxImage.setAttribute("alt", alt);
         lightboxImage.setAttribute("tabindex", 0);
         lightbox.appendChild(lightboxImage);
+        lightbox.appendChild(lightboxImageTitle);
         displayLightbox();
         eventListenerLightbox();
       }
@@ -65,29 +82,39 @@ async function displayMedia() {
     media.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
         currentIndex = index;
-        if (media.localName === "img") {
-          const src = media.src;
-          const alt = media.alt;
+        if (media.firstChild.localName === "img") {
+          const src = media.firstChild.src;
+          const alt = media.firstChild.alt;
+          const title = media.lastChild.firstChild.innerHTML;
           const lightbox = document.querySelector(".media_zoom");
           const lightboxImage = document.createElement("img");
+          const lightboxImageTitle = document.createElement("p");
+          lightboxImageTitle.textContent = title;
+          lightboxImageTitle.setAttribute("class", "title_picture_zoom");
           lightboxImage.setAttribute("src", src);
           lightboxImage.setAttribute("class", "lightbox_img");
           lightboxImage.setAttribute("alt", alt);
           lightboxImage.setAttribute("tabindex", 0);
           lightbox.appendChild(lightboxImage);
+          lightbox.appendChild(lightboxImageTitle);
           displayLightbox();
           eventListenerLightbox();
-        } else if (media.localName === "video") {
-          const src = media.src;
-          const alt = media.alt;
+        } else if (media.firstChild.localName === "video") {
+          const src = media.firstChild.src;
+          const alt = media.firstChild.alt;
+          const title = media.lastChild.firstChild.innerHTML;
           const lightbox = document.querySelector(".media_zoom");
           const lightboxImage = document.createElement("video");
+          const lightboxImageTitle = document.createElement("p");
+          lightboxImageTitle.textContent = title;
+          lightboxImageTitle.setAttribute("class", "title_picture_zoom");
           lightboxImage.setAttribute("src", src);
           lightboxImage.setAttribute("class", "lightbox_video");
           lightboxImage.setAttribute("controls", "controls");
           lightboxImage.setAttribute("alt", alt);
           lightboxImage.setAttribute("tabindex", 0);
           lightbox.appendChild(lightboxImage);
+          lightbox.appendChild(lightboxImageTitle);
           displayLightbox();
           eventListenerLightbox();
         }
@@ -111,30 +138,45 @@ function updateLightbox() {
   const lightboxMedia =
     document.querySelector(".lightbox_img") ||
     document.querySelector(".lightbox_video");
+  const lightboxImageTitle = document.querySelector(".title_picture_zoom"); 
+  console.log(lightboxImageTitle);
   if (lightboxMedia) {
     lightboxMedia.remove();
   }
+  if (lightboxImageTitle) {
+    lightboxImageTitle.remove();
+  }
 
   const media = mediaElements[currentIndex];
-  if (media.localName === "img") {
-    const src = media.src;
-    const alt = media.alt;
+  if (media.firstChild.localName === "img") {
+    const src = media.firstChild.src;
+    const alt = media.firstChild.alt;
+    const title = media.lastChild.firstChild.innerHTML;
     const lightboxImage = document.createElement("img");
+    const lightboxImageTitle = document.createElement("p");
+    lightboxImageTitle.textContent = title;
+    lightboxImageTitle.setAttribute("class", "title_picture_zoom");
     lightboxImage.setAttribute("src", src);
     lightboxImage.setAttribute("class", "lightbox_img");
     lightboxImage.setAttribute("alt", alt);
     lightboxImage.setAttribute("tabindex", 0);
     lightbox.appendChild(lightboxImage);
-  } else if (media.localName === "video") {
-    const src = media.src;
-    const alt = media.alt;
+    lightbox.appendChild(lightboxImageTitle);
+  } else if (media.firstChild.localName === "video") {
+    const src = media.firstChild.src;
+    const alt = media.firstChild.alt;
+    const title = media.lastChild.firstChild.innerHTML;
     const lightboxVideo = document.createElement("video");
+    const lightboxImageTitle = document.createElement("p");
+    lightboxImageTitle.textContent = title;
+    lightboxImageTitle.setAttribute("class", "title_picture_zoom");
     lightboxVideo.setAttribute("src", src);
     lightboxVideo.setAttribute("class", "lightbox_video");
     lightboxVideo.setAttribute("controls", "controls");
     lightboxVideo.setAttribute("alt", alt);
     lightboxVideo.setAttribute("tabindex", 0);
     lightbox.appendChild(lightboxVideo);
+    lightbox.appendChild(lightboxImageTitle);
   }
 }
 // Fonction pour ajouter des écouteurs d'événements à la lightbox

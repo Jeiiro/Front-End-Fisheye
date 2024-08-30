@@ -196,7 +196,8 @@ form textarea {
   display: flex;
   justify-content: space-between;
 }
-.title_picture {
+.title_picture, 
+.title_picture_zoom {
   color: #901c1c;
   font-size: 24px;
 }

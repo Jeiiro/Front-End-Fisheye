@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+let currentSort = "date";
 // Fonction asynchrone pour filtrer et trier les médias en fonction des critères sélectionnés
 // eslint-disable-next-line no-unused-vars
 async function filter(data) {
@@ -42,6 +44,7 @@ async function filter(data) {
   }
 // Fonction pour trier les médias en fonction du critère choisi
   function sortAndDisplay(sortBy) {
+    currentSort = sortBy;
     if (mediaArray.length === 0) return [];
     mediaArray.sort((a, b) => {
       if (sortBy === "likes") {

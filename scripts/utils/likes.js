@@ -18,7 +18,10 @@ function toggleLikes(e) {
     const totalLikesCountNumber = parseInt(totalLikesCount.textContent);
     totalLikesCount.textContent = totalLikesCountNumber + 1;
   }
-  updateMediaDisplay();
+  // eslint-disable-next-line no-undef
+  if (currentSort === "likes") {
+    updateMediaDisplay();
+  }
 }
 // Fonction pour récupérer les likes de tous les médias
 function getMediaLikes() {
@@ -56,5 +59,6 @@ function displaySortedMedia(mediaLikes) {
 function updateMediaDisplay() {
   const mediaLikes = getMediaLikes();
   const sortedMedia = sortMediaByLikes(mediaLikes);
+
   displaySortedMedia(sortedMedia);
 }
